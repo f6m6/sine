@@ -1,0 +1,278 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D82A94091B17C9AD009A9A12 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82A94081B17C9AD009A9A12 /* CoreFoundation.framework */; };
+		D82A94101B17C9AD009A9A12 /* Sine.h in Headers */ = {isa = PBXBuildFile; fileRef = D82A940F1B17C9AD009A9A12 /* Sine.h */; };
+		D82A94121B17C9AD009A9A12 /* SinePriv.h in Headers */ = {isa = PBXBuildFile; fileRef = D82A94111B17C9AD009A9A12 /* SinePriv.h */; };
+		D82A94141B17C9AD009A9A12 /* Sine.cp in Sources */ = {isa = PBXBuildFile; fileRef = D82A94131B17C9AD009A9A12 /* Sine.cp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D82A94051B17C9AD009A9A12 /* Sine.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Sine.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		D82A94081B17C9AD009A9A12 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		D82A940C1B17C9AD009A9A12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D82A940D1B17C9AD009A9A12 /* SineProj.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SineProj.xcconfig; sourceTree = "<group>"; };
+		D82A940E1B17C9AD009A9A12 /* SineTarget.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SineTarget.xcconfig; sourceTree = "<group>"; };
+		D82A940F1B17C9AD009A9A12 /* Sine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sine.h; sourceTree = "<group>"; };
+		D82A94111B17C9AD009A9A12 /* SinePriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SinePriv.h; sourceTree = "<group>"; };
+		D82A94131B17C9AD009A9A12 /* Sine.cp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Sine.cp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D82A94021B17C9AD009A9A12 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D82A94091B17C9AD009A9A12 /* CoreFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D82A93FC1B17C9AD009A9A12 = {
+			isa = PBXGroup;
+			children = (
+				D82A940A1B17C9AD009A9A12 /* Sine */,
+				D82A94071B17C9AD009A9A12 /* Frameworks */,
+				D82A94061B17C9AD009A9A12 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D82A94061B17C9AD009A9A12 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D82A94051B17C9AD009A9A12 /* Sine.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D82A94071B17C9AD009A9A12 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D82A94081B17C9AD009A9A12 /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D82A940A1B17C9AD009A9A12 /* Sine */ = {
+			isa = PBXGroup;
+			children = (
+				D82A940D1B17C9AD009A9A12 /* SineProj.xcconfig */,
+				D82A940E1B17C9AD009A9A12 /* SineTarget.xcconfig */,
+				D82A940F1B17C9AD009A9A12 /* Sine.h */,
+				D82A94111B17C9AD009A9A12 /* SinePriv.h */,
+				D82A94131B17C9AD009A9A12 /* Sine.cp */,
+				D82A940B1B17C9AD009A9A12 /* Supporting Files */,
+			);
+			path = Sine;
+			sourceTree = "<group>";
+		};
+		D82A940B1B17C9AD009A9A12 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D82A940C1B17C9AD009A9A12 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D82A94031B17C9AD009A9A12 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D82A94121B17C9AD009A9A12 /* SinePriv.h in Headers */,
+				D82A94101B17C9AD009A9A12 /* Sine.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D82A94041B17C9AD009A9A12 /* Sine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D82A94171B17C9AD009A9A12 /* Build configuration list for PBXNativeTarget "Sine" */;
+			buildPhases = (
+				D82A94011B17C9AD009A9A12 /* Sources */,
+				D82A94021B17C9AD009A9A12 /* Frameworks */,
+				D82A94031B17C9AD009A9A12 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Sine;
+			productName = Sine;
+			productReference = D82A94051B17C9AD009A9A12 /* Sine.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D82A93FD1B17C9AD009A9A12 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Farhan Mannan";
+				TargetAttributes = {
+					D82A94041B17C9AD009A9A12 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+				};
+			};
+			buildConfigurationList = D82A94001B17C9AD009A9A12 /* Build configuration list for PBXProject "Sine" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D82A93FC1B17C9AD009A9A12;
+			productRefGroup = D82A94061B17C9AD009A9A12 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D82A94041B17C9AD009A9A12 /* Sine */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D82A94011B17C9AD009A9A12 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D82A94141B17C9AD009A9A12 /* Sine.cp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D82A94151B17C9AD009A9A12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D82A94161B17C9AD009A9A12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D82A94181B17C9AD009A9A12 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Sine/Info.plist;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D82A94191B17C9AD009A9A12 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Sine/Info.plist;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D82A94001B17C9AD009A9A12 /* Build configuration list for PBXProject "Sine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D82A94151B17C9AD009A9A12 /* Debug */,
+				D82A94161B17C9AD009A9A12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D82A94171B17C9AD009A9A12 /* Build configuration list for PBXNativeTarget "Sine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D82A94181B17C9AD009A9A12 /* Debug */,
+				D82A94191B17C9AD009A9A12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D82A93FD1B17C9AD009A9A12 /* Project object */;
+}

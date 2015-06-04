@@ -24,7 +24,7 @@ struct SineNote : public SynthNote
         double sampleRate = SampleRate();
         phase = 0.;
         amp = 0.;
-        maxamp = 0.4 * pow(inParams.mVelocity/127., 3.);
+        maxamp = 0.4 * pow(inParams.mVelocity/127., 3.); // what the hell's going on here
         up_slope = maxamp / (0.1 * sampleRate);
         dn_slope = -maxamp / (0.9 * sampleRate);
         fast_dn_slope = -maxamp / (0.005 * sampleRate);

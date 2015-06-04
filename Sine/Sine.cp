@@ -137,6 +137,10 @@ OSStatus		SineNote::Render(UInt64 inAbsoluteSampleFrame, UInt32 inNumFrames, Aud
 #if DEBUG_PRINT_RENDER
     printf("SineNote::Render %p %d %g %g\n", this, GetState(), phase, amp);
 #endif
+    
+    // farhan added this
+    amp = maxamp;
+    
     switch (GetState())
     {
         case kNoteState_Attacked :
@@ -146,7 +150,7 @@ OSStatus		SineNote::Render(UInt64 inAbsoluteSampleFrame, UInt32 inNumFrames, Aud
         {
             for (UInt32 frame=0; frame<inNumFrames; ++frame)
             {
-                if (amp < maxamp) amp += up_slope;
+//                if (amp < maxamp) amp += up_slope; remove this for that clean sin sound! ayy
                 float out = sin(phase) * amp * globalVol;
                 phase += freq;
                 if (phase > twopi) phase -= twopi;
@@ -161,8 +165,8 @@ OSStatus		SineNote::Render(UInt64 inAbsoluteSampleFrame, UInt32 inNumFrames, Aud
             UInt32 endFrame = 0xFFFFFFFF;
             for (UInt32 frame=0; frame<inNumFrames; ++frame)
             {
-                if (amp > 0.0) amp += dn_slope;
-                else if (endFrame == 0xFFFFFFFF) endFrame = frame;
+                if (amp > 0.0) amp += fast_dn_slope; // farhan changed this to be fast dn not just dn
+                if (endFrame == 0xFFFFFFFF) endFrame = frame;
                 float out = sin(phase) * amp * globalVol;
                 phase += freq;
                 left[frame] += out;

@@ -20,3 +20,16 @@ CFStringRef CSine::UUID()
 {
 	return CFSTR("0001020304050607");
 }
+
+#pragma mark Sine methods
+
+AUDIOCOMPONENT_ENTRY(AUMusicDeviceFactory, Sine)
+
+Sine::Sine(AudioUnit inComponentInstance): AUMonotimbralInstrumentBase(inComponentInstance, 0, 1)
+{
+    CreateElements();
+    Globals()->UseIndexedParameters(1);
+    Globals()->SetParameter (kGlobalVolumeParam, 1.0);
+}
+
+Sine::~Sine() {}

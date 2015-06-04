@@ -1,7 +1,7 @@
 /*
      File: AUBase.cpp
  Abstract: AUBase.h
-  Version: 1.0.1
+  Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -166,7 +166,7 @@ AUBase::~AUBase()
 
 //_____________________________________________________________________________
 //
-    void	AUBase::CreateElements()
+void	AUBase::CreateElements()
 {
 	if (!mElementsCreated) {
 		Inputs().Initialize(this, kAudioUnitScope_Input, mInitNumInputEls);

@@ -11,6 +11,7 @@
 		D82A94101B17C9AD009A9A12 /* Sine.h in Headers */ = {isa = PBXBuildFile; fileRef = D82A940F1B17C9AD009A9A12 /* Sine.h */; };
 		D82A94121B17C9AD009A9A12 /* SinePriv.h in Headers */ = {isa = PBXBuildFile; fileRef = D82A94111B17C9AD009A9A12 /* SinePriv.h */; };
 		D82A94141B17C9AD009A9A12 /* Sine.cp in Sources */ = {isa = PBXBuildFile; fileRef = D82A94131B17C9AD009A9A12 /* Sine.cp */; };
+		D87298B01B2041FE0031146A /* Sine_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = D87298AF1B2041FE0031146A /* Sine_Prefix.pch */; };
 		D8B8D2721B1E5973004BDEC4 /* AUBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8B8D2241B1E5973004BDEC4 /* AUBase.cpp */; };
 		D8B8D2731B1E5973004BDEC4 /* AUBase.h in Headers */ = {isa = PBXBuildFile; fileRef = D8B8D2251B1E5973004BDEC4 /* AUBase.h */; };
 		D8B8D2741B1E5973004BDEC4 /* AUDispatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8B8D2261B1E5973004BDEC4 /* AUDispatch.cpp */; };
@@ -97,6 +98,7 @@
 		D82A940F1B17C9AD009A9A12 /* Sine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sine.h; sourceTree = "<group>"; };
 		D82A94111B17C9AD009A9A12 /* SinePriv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SinePriv.h; sourceTree = "<group>"; };
 		D82A94131B17C9AD009A9A12 /* Sine.cp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Sine.cp; sourceTree = "<group>"; };
+		D87298AF1B2041FE0031146A /* Sine_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sine_Prefix.pch; sourceTree = "<group>"; };
 		D8B8D2241B1E5973004BDEC4 /* AUBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AUBase.cpp; sourceTree = "<group>"; };
 		D8B8D2251B1E5973004BDEC4 /* AUBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUBase.h; sourceTree = "<group>"; };
 		D8B8D2261B1E5973004BDEC4 /* AUDispatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AUDispatch.cpp; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				D82A94111B17C9AD009A9A12 /* SinePriv.h */,
 				D82A94131B17C9AD009A9A12 /* Sine.cp */,
 				D82A940B1B17C9AD009A9A12 /* Supporting Files */,
+				D87298AF1B2041FE0031146A /* Sine_Prefix.pch */,
 			);
 			path = Sine;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				D8B8D29D1B1E5973004BDEC4 /* CAAUMIDIMap.h in Headers */,
 				D8B8D2971B1E5973004BDEC4 /* CAAtomic.h in Headers */,
 				D8B8D2A71B1E5973004BDEC4 /* CADebugMacros.h in Headers */,
+				D87298B01B2041FE0031146A /* Sine_Prefix.pch in Headers */,
 				D8B8D2A91B1E5973004BDEC4 /* CADebugPrintf.h in Headers */,
 				D8B8D2821B1E5973004BDEC4 /* LockFreeFIFO.h in Headers */,
 				D8B8D2A21B1E5973004BDEC4 /* CABufferList.h in Headers */,
@@ -587,8 +591,16 @@
 		D82A94181B17C9AD009A9A12 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Sine_Prefix.pch;
 				INFOPLIST_FILE = Sine/Info.plist;
+				OTHER_CFLAGS = (
+					"-DDEBUG",
+					"$(OTHER_CFLAGS)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = component;
 			};
@@ -597,8 +609,16 @@
 		D82A94191B17C9AD009A9A12 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Sine_Prefix.pch;
 				INFOPLIST_FILE = Sine/Info.plist;
+				OTHER_CFLAGS = (
+					"-DDEBUG",
+					"$(OTHER_CFLAGS)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = component;
 			};

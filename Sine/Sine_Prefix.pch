@@ -1,0 +1,15 @@
+//
+//  Sine_Prefix.pch
+//  Sine
+//
+//  Created by Farhan on 04/06/2015.
+//  Copyright (c) 2015 Farhan Mannan. All rights reserved.
+//
+
+#ifndef Sine_Sine_Prefix_pch
+#define Sine_Sine_Prefix_pch
+
+#include <CoreAudio/CoreAudioTypes.h>
+#include <AudioUnit/AudioUnit.h>
+
+#endif

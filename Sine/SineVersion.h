@@ -9,7 +9,7 @@
 #ifndef Sine_SineVersion_h
 #define Sine_SineVersion_h
 
-#define kSineVersion 0x00010000
+#define kSineVersion 0x00020000
 #define kSineSubtype 'jsin'
 
 #endif

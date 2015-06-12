@@ -19,13 +19,14 @@ const double twopi = 2.0 * 3.14159265358979;
 AUDIOCOMPONENT_ENTRY(AUMusicDeviceFactory, Sine)
 
 static const AudioUnitParameterID kGlobalVolumeParam = 0;
-static const CFStringRef kGlobalVolumeName = CFSTR("global volume");
+static const CFStringRef kGlobalVolumeName = CFSTR("volume");
 
 Sine::Sine(AudioUnit inComponentInstance): AUMonotimbralInstrumentBase(inComponentInstance, 0, 1)
 {
     CreateElements();
-    Globals()->UseIndexedParameters(1);
+    Globals()->UseIndexedParameters(1 + kNumberOfParameters); // using a global param here
     Globals()->SetParameter (kGlobalVolumeParam, 1.0);
+    Globals()->SetParameter (kParameter_PolyphonyMode, kDefaultValue_PolyphonyMode);
 }
 
 Sine::~Sine() {}
@@ -44,7 +45,7 @@ OSStatus Sine::Initialize()
 #endif
     AUMonotimbralInstrumentBase::Initialize();
     
-    SetNotes(kNumNotes, kMaxActiveNotes, mSineNotes, sizeof(SineNote));
+    SetNotes(kNumNotes, 1, mSineNotes, sizeof(SineNote));
 #if DEBUG_PRINT
     printf("<-Sine::Initialize\n");
 #endif
@@ -66,24 +67,74 @@ AUElement* Sine::CreateElement(	AudioUnitScope					scope,
     }
 }
 
-OSStatus			Sine::GetParameterInfo(		AudioUnitScope					inScope,
-                                               AudioUnitParameterID			inParameterID,
-                                               AudioUnitParameterInfo &		outParameterInfo)
-{
-    if (inParameterID != kGlobalVolumeParam) return kAudioUnitErr_InvalidParameter;
-    if (inScope != kAudioUnitScope_Global) return kAudioUnitErr_InvalidScope;
+#pragma mark Parameters
+
+OSStatus Sine::GetParameterInfo(AudioUnitScope inScope,
+                                AudioUnitParameterID inParameterID,
+                                AudioUnitParameterInfo &outParameterInfo) {
+    outParameterInfo.flags =
+        kAudioUnitParameterFlag_IsWritable | kAudioUnitParameterFlag_IsReadable;
     
-    outParameterInfo.flags = SetAudioUnitParameterDisplayType (0, kAudioUnitParameterFlag_DisplaySquareRoot);
-    outParameterInfo.flags += kAudioUnitParameterFlag_IsWritable;
-    outParameterInfo.flags += kAudioUnitParameterFlag_IsReadable;
-    
-    AUBase::FillInParameterName (outParameterInfo, kGlobalVolumeName, false);
-    outParameterInfo.unit = kAudioUnitParameterUnit_LinearGain;
-    outParameterInfo.minValue = 0;
-    outParameterInfo.maxValue = 1.0;
-    outParameterInfo.defaultValue = 1.0;
-    return noErr;
+    if (inScope == kAudioUnitScope_Global) {
+        
+        switch (inParameterID) {
+            case kGlobalVolumeParam:
+                outParameterInfo.flags += SetAudioUnitParameterDisplayType (0, kAudioUnitParameterFlag_DisplaySquareRoot);
+                
+                AUBase::FillInParameterName (outParameterInfo, kGlobalVolumeName, false);
+                outParameterInfo.unit = kAudioUnitParameterUnit_LinearGain;
+                outParameterInfo.minValue = 0;
+                outParameterInfo.maxValue = 1.0;
+                outParameterInfo.defaultValue = 1.0;
+                return noErr;
+                break;
+                
+            case kParameter_PolyphonyMode:
+                AUBase::FillInParameterName (
+                                             outParameterInfo,
+                                             kParamName_PolyphonyMode,
+                                             false
+                                             );
+                outParameterInfo.unit			= kAudioUnitParameterUnit_Indexed;
+                outParameterInfo.minValue		= kMonophonic_PolyphonyMode;
+                outParameterInfo.maxValue		= kPolyphonic_PolyphonyMode;
+                outParameterInfo.defaultValue	= kDefaultValue_PolyphonyMode;
+                return noErr;
+                break;
+                
+            default: return kAudioUnitErr_InvalidParameter;
+                break;
+        }
+        
+    } else {
+        return kAudioUnitErr_InvalidScope;
+    }
 }
+
+ComponentResult Sine::GetParameterValueStrings (
+                                                       AudioUnitScope			inScope,
+                                                       AudioUnitParameterID	inParameterID,
+                                                       CFArrayRef				*outStrings
+                                                       ) {
+    if ((inScope == kAudioUnitScope_Global) && (inParameterID == kParameter_PolyphonyMode)) {
+        if (outStrings == NULL) return noErr;
+        
+        CFStringRef	strings [] = {
+            kMenuItem_Monophonic_PolyphonyMode,
+            kMenuItem_Polyphonic_PolyphonyMode
+        };
+    
+        *outStrings = CFArrayCreate (
+                                     NULL,
+                                     (const void **) strings,
+                                     (sizeof (strings) / sizeof (strings [0])),
+                                     NULL
+                                     );
+        return noErr;
+    }
+    return kAudioUnitErr_InvalidParameter;
+}
+
 
 #pragma mark SineNote Methods
 
@@ -115,6 +166,12 @@ void			SineNote::Kill(UInt32 inFrame) // voice is being stolen.
 
 OSStatus		SineNote::Render(UInt64 inAbsoluteSampleFrame, UInt32 inNumFrames, AudioBufferList** inBufferList, UInt32 inOutBusCount)
 {
+    
+    AUInstrumentBase* myAU = SynthNote::GetAudioUnit();
+    
+    SetNotes(kNumNotes, kMaxActiveNotes, myAU->mSineNotes, sizeof(SineNote));
+
+    
     float *left, *right;
     /* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
      Changes to this parameter (kGlobalVolumeParam) are not being de-zippered;

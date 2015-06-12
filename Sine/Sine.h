@@ -12,6 +12,21 @@
 
 static const UInt32 kNumNotes = 12;
 
+#pragma mark Sine Parameter Constants
+
+static CFStringRef kParamName_PolyphonyMode = CFSTR ("polyphony mode");
+static const int kMonophonic_PolyphonyMode = 1;
+static const int kPolyphonic_PolyphonyMode = 2;
+static const int kDefaultValue_PolyphonyMode = kMonophonic_PolyphonyMode;
+
+static CFStringRef kMenuItem_Monophonic_PolyphonyMode = CFSTR ("monophonic");
+static CFStringRef kMenuItem_Polyphonic_PolyphonyMode = CFSTR ("polyphonic");
+
+enum {
+    kParameter_PolyphonyMode = 1, // because kGlobalVolumeParam, 0, is defined in Sine.cp
+    kNumberOfParameters = 2
+};
+
 struct SineNote : public SynthNote
 {
     virtual					~SineNote() {}
@@ -57,12 +72,18 @@ public:
                                                  AudioUnitParameterID			inParameterID,
                                                  AudioUnitParameterInfo &		outParameterInfo);
     
+    virtual	ComponentResult GetParameterValueStrings (
+                                                      AudioUnitScope			inScope,
+                                                      AudioUnitParameterID	inParameterID,
+                                                      CFArrayRef				*outStrings
+                                                      );
+    
     MidiControls*				GetControls( MusicDeviceGroupID inChannel)
     {
         SynthGroupElement *group = GetElForGroupID(inChannel);
         return (MidiControls *) group->GetMIDIControlHandler();
     }
-    
+
 private:
     
     SineNote mSineNotes[kNumNotes];
